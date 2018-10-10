@@ -1,0 +1,31 @@
+body {
+    background-color:black;
+}
+h1 {
+    color: black;
+
+    font-size: 100px;
+}
+.Neflis{
+
+background-color:red;
+text-align: center;
+font-family: verdana;
+}
+div.pelis{
+    color:white;
+    font-family: 'Franklin Gothic Medium';
+    margin: 20px;
+    float: left;
+    width: 180px;
+    list-style:none;
+}
+.raul{
+    color:white;
+    text-align:left;
+    width: 230px;
+
+}
+.msg {
+    display: none;
+}
