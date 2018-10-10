@@ -27,17 +27,25 @@ function sendData(params){
     console.log(params)
     return $.ajax({
         method:"POST",
-        url:"http://192.168.1.132:3000/peliculas",
+        url:"http://192.168.1.115:3000/peliculas",
         data:params
     })
 }
 
 function getAllFilms(){
     $.ajax({
-        url:"http://192.168.1.132:3000/peliculas",
+        url:"http://192.168.1.115:3000/peliculas",
         method:"GET",
     }).then(getSuc, getErr)
+};
+getByID(ID){
+    $.ajax({
+        method:"GET",
+        url:"http://192.168.1.115:3000/peliculas"+ID
+    })
 }
+
+
 function getSuc(response){
     listFilms.setMovies(response);
     listFilms.listAll();
@@ -56,6 +64,14 @@ var listFilms={
             $("#table-body").append(listFilms.assamble(this.data[i]));
         }
     },
+     $("action").ON("click",function(){
+        var ID=$(this).attr("data-ID")
+        console.log(ID)
+        getByID(ID)
+    });
+    getByID(ID).then(function(res){
+        console.log(res)
+    })
     assamble:function(Data){
         return  '<li>' +
         '<img src="' + Data.poster +'">'+
