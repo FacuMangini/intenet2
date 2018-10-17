@@ -27,21 +27,21 @@ function sendData(params){
     console.log(params)
     return $.ajax({
         method:"POST",
-        url:"http://192.168.1.115:3000/peliculas",
+        url:"http://192.168.1.170:3000/peliculas",
         data:params
     })
 }
 
 function getAllFilms(){
     $.ajax({
-        url:"http://192.168.1.115:3000/peliculas",
+        url:"http://192.168.1.170:3000/peliculas",
         method:"GET",
     }).then(getSuc, getErr)
 };
-getByID(ID){
-    $.ajax({
+function getByID(ID){
+    return $.ajax({
         method:"GET",
-        url:"http://192.168.1.115:3000/peliculas"+ID
+        url:"http://192.168.1.170:3000/peliculas"+ID
     })
 }
 
@@ -63,17 +63,25 @@ var listFilms={
         for(var i = 0; i < this.data.length; i++){
             $("#table-body").append(listFilms.assamble(this.data[i]));
         }
-    },
+    
      $("action").ON("click",function(){
         var ID=$(this).attr("data-ID")
         console.log(ID)
-        getByID(ID)
+        getByID(ID).then(function(res){
+            console.log(res);
+            $(".wrapper").html(oneassamble(res))
+      
+    $(".back").on("click",function(){
+        clear();
+        getAllFilms();
     });
-    getByID(ID).then(function(res){
-        console.log(res)
-    })
+      })
+    });
+    },    
+    
+    
     assamble:function(Data){
-        return  '<li>' +
+        return  '<li class="action" data-id="'+Data._id+'">' +
         '<img src="' + Data.poster +'">'+
         '<p>'+ Data.title +'</p>' +
         '<p>'+ Data.gender +'</p>'+
@@ -85,3 +93,37 @@ var listFilms={
 };
 
 getAllFilms();
+
+
+function sendData(params) {
+    return $.ajax({
+        method: "POST",
+        url: "http://192.168.1.115:3000/peliculas",
+        data: params,
+    })
+
+}
+
+function clear() {
+
+    $(".wrapper").html(" ")
+
+}
+
+function oneassamble(data) {
+    return '<article>' +
+    ' <button>Back</button>'
+        +'<img class="carteleras" src="' + data.poster + '" />'
+        + '<h5>' + data.title + '</h5>'
+        + '<br>'
+        + '<p class="info">' + data.gender + '</p>'
+        + '<p class="info">' + data.score + '</p>'
+        + '</article>'
+        + '<article>'
+        + '<br>'
+        + '<p class="info">' + data.description + '</p>'
+        + '<p class="info">' + data.cast + '</p>'
+        + '</article>'
+
+
+};
