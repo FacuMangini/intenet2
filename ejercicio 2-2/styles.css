@@ -1,14 +1,94 @@
-body{
-
-background-repeat: no-repeat;
-background-position: center;
-
-
-
+body {
+    font-family: "ms gothic";
+    color:grey;
+    width: 30cm;
+    border: 1px solid pink;
+    padding: 1cm;
+    margin:auto;
 
 
 
 }
-.msg {
-    display: none;
+
+.formulario{
+    width: 350px;
+}
+
+form {
+    padding: 0.5cm;
+    
+    border: 1px solid peachpuff;
+
+}
+
+.movies {
+    font-family: "ms gothic";
+    color:white;
+    text-align: center;
+    font-size: 10;
+    background-color: pink;
+    
+
+
+}
+
+div{
+    padding: 0.2cm;
+
+
+}
+
+.hide{
+display:none;  
+}
+
+.titulos{
+    font-weight: bold;
+    font-size: 8;
+}
+
+
+.posters{
+    align-self: CENTER;
+    border: 1px solid palevioletred;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.columna{
+    width: 10cm;
+    border: 1px solid pink;
+}
+.wrapper{
+    overflow: hidden;
+}
+article{
+    width: 275px;
+    border: 1px solid pink;
+    padding: 15px;
+    float: left;
+    margin-left: 1px;
+    
+}
+
+h5{
+    text-decoration: underline;
+    background-color: pink;
+    color:white;
+    padding: 5px;
+}
+
+img{
+    width: 220;
+    height: 325px;
+}
+
+.moreinfo{
+    overflow: hidden;
+    margin-left:1px;
+    float: left;
+    width: 760px;
+  
+    
 }
